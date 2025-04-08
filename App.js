@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
-  const [nome, setNome] = useState(''); //
-  const [sobrenome, setSobrenome] = useState('');
-  const [idade, setIdade] = useState('');
-  const [profissao, setProfissao] = useState('');
-  const [email, setEmail] = useState('');
+  const [nome, setNome] = useState(''); //nome é o estado e setNome é a função que atualiza o estado
+  const [sobrenome, setSobrenome] = useState(''); //sobrenome é o estado e setSobrenome é a função que atualiza o estado
+  const [idade, setIdade] = useState(''); //idade é o estado e setIdade é a função que atualiza o estado
+  const [profissao, setProfissao] = useState(''); //profissao é o estado e setProfissao é a função que atualiza o estado
+  const [email, setEmail] = useState(''); //email é o estado e setEmail é a função que atualiza o estado
+
   const imageUrl = 'https://media.licdn.com/dms/image/v2/C4D03AQG6ZX9aI-x1ag/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1609855142045?e=1747872000&v=beta&t=wwnSeIrrCPLXyld12vySVSFXfdrIbtcK6g6uRvU2GSU';
+  // Pega a url da imagem do perfil do usuário no linkedin
 
 
   return (
@@ -66,6 +68,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  View: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
