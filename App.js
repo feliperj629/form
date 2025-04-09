@@ -1,69 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from './src/screens/HomeScreen';
+import SegundaPagina from './src/screens/SegundaPagina';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [nome, setNome] = useState(''); //nome é o estado e setNome é a função que atualiza o estado
-  const [sobrenome, setSobrenome] = useState(''); //sobrenome é o estado e setSobrenome é a função que atualiza o estado
-  const [idade, setIdade] = useState(''); //idade é o estado e setIdade é a função que atualiza o estado
-  const [profissao, setProfissao] = useState(''); //profissao é o estado e setProfissao é a função que atualiza o estado
-  const [email, setEmail] = useState(''); //email é o estado e setEmail é a função que atualiza o estado
-
-  const imageUrl = 'https://media.licdn.com/dms/image/v2/C4D03AQG6ZX9aI-x1ag/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1609855142045?e=1747872000&v=beta&t=wwnSeIrrCPLXyld12vySVSFXfdrIbtcK6g6uRvU2GSU';
-  // Pega a url da imagem do perfil do usuário no linkedin
-
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Formulário de Cadastro</Text>
-      <Image source={{ uri: imageUrl }} style={styles.logo} />
-
-
-      <StatusBar style="auto" />
-
-      <TextInput style={styles.input}
-        placeholder="Digite seu nome"
-        value={nome}
-        onChangeText={setNome}
-      />
-      <TextInput style={styles.input}
-        placeholder="Digite seu sobrenome"
-        value={sobrenome}
-        onChangeText={setSobrenome}
-      />
-      <TextInput style={styles.input}
-        placeholder="Digite seu email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput style={styles.input}
-        placeholder="Digite sua idade"
-        value={idade}
-        onChangeText={setIdade}
-      />
-      <TextInput style={styles.input}
-        placeholder="Sua profissão:"
-        value={profissao}
-        onChangeText={setProfissao}
-      />
-
-      <View style={styles.textContainer}>
-        <Text style={styles.text2}>Dados do usuário:</Text>
-        {nome && sobrenome && (
-          <Text style={styles.text2}>Nome: {nome} {sobrenome}</Text>
-        )}
-        {email && (
-          <Text style={styles.text2}>Email: {email} </Text>
-        )}
-        {idade && (
-          <Text style={styles.text2}>Idade: {idade} </Text>
-        )}
-        {profissao && (
-          <Text style={styles.text2}>Profissão: {profissao} </Text>
-        )}
-      </View>
-      <Button title="Salvar" onPress={() => alert('Seu nome é: ' + nome + ' e seu sobrenome é: ' + sobrenome + ' e sua idade é: ' + idade)} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Formulário' }}
+        />
+        <Stack.Screen
+          name="SegundaPagina"
+          component={SegundaPagina}
+          options={{ title: 'Segunda Página' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -92,7 +51,7 @@ const styles = StyleSheet.create({
     color: 'green',
   },
   text2: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'blue',
   },
@@ -107,5 +66,54 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderColor: 'gray',
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  textContainer2: {
+    marginTop: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '70%',
+    height: 70,
+    borderColor: 'gray',
+    marginBottom: 10,
+    margin: 30,
+  },
+  lista: {
+    marginTop: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '50%',
+    height: 70,
+    borderColor: 'gray',
+    marginBottom: 10,
+    borderWidth: 1,
+  },
+  listaItem: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'green',
+    marginBottom: 5,
+    borderColor: 'gray',
+    width: '100%',
+    textAlign: 'center',
+    marginTop: 5,
+  },
+  animatedContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  animatedView: {
+    width: 200,
+    height: 50,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    opacity: 0.5,
+  },
+  animatedText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
